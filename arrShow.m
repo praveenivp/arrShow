@@ -4066,6 +4066,9 @@ classdef arrShow < handle
                         if arrShow.mouseInsideAxes(position, currAxes);
                             x = round(position(1,1));
                             y = round(position(1,2));
+                            
+                            if(x==0);x=1;end
+                            if(y==0);y=1;end
 
                             obj.cursor.setPosition([y,x],false);
                             break;
