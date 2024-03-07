@@ -307,12 +307,15 @@ classdef arrShow < handle
                 set(obj.fh,'Name',obj.title);
             end
             
-            % change figure icon :-)
-            warning('off','MATLAB:HandleGraphics:ObsoletedProperty:JavaFrame');
-            jframe=get(obj.fh,'javaframe');
-            jIcon=javax.swing.ImageIcon(fullfile(iconPath,'figure.png'));
-            jframe.setFigureIcon(jIcon);
-            clear jframe jIcon
+%             % change figure icon :-)
+            try % show smiley face as far as we can!!!
+                warning('off','MATLAB:ui:javaframe:PropertyToBeRemoved');
+                jframe=get(obj.fh,'javaframe');
+                jIcon=javax.swing.ImageIcon(fullfile(iconPath,'figure.png'));
+                jframe.setFigureIcon(jIcon);
+                clear jframe jIcon
+            end
+
             
             % init menu- and toolbar
             obj.initMenuBar();
